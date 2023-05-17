@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDdPUs_lHpq1TK7D1CCPYFEn3-VBkywBbc",
-  authDomain: "wild-joy-d8303.firebaseapp.com",
-  projectId: "wild-joy-d8303",
-  storageBucket: "wild-joy-d8303.appspot.com",
-  messagingSenderId: "160545970302",
-  appId: "1:160545970302:web:a9491d47b0c780129b202f",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
