@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../../assets/wild-joy-logo.png"
+import logo from "../../../assets/wild-joy-logo.png";
 
 const NavBar = () => {
   const navItems = (
@@ -10,7 +10,7 @@ const NavBar = () => {
       <li className="font-bold tracking-wide text-wildJoyColorTwo">
         <Link to="/allToys">All Toys</Link>
       </li>
-      
+
       <li className="font-bold tracking-wide text-wildJoyColorTwo">
         <Link to="/myToys">My Toys</Link>
       </li>
@@ -24,7 +24,8 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 py-10">
+    <nav className="max-w-7xl mx-auto">
+      <div className="navbar bg-base-100 py-10">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,22 +48,25 @@ const NavBar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-           {navItems}
+            {navItems}
           </ul>
         </div>
-        <img src={logo} className="w-36" alt="" />
+        <Link>
+          <img src={logo} className="w-36" alt="" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
         <Link to="/login">
-          <button className="py-2 px-5 text-wildJoyColorOne  font-bold bg-wildJoyColorThree rounded-xl border-0">Login</button>
+          <button className="py-2 px-5 text-wildJoyColorOne  font-bold bg-wildJoyColorThree rounded-xl border-0">
+            Login
+          </button>
         </Link>
       </div>
     </div>
+    </nav>
   );
 };
 
