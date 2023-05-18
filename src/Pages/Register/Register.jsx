@@ -1,7 +1,41 @@
 import { Link } from "react-router-dom";
 import loginBanner from "../../assets/login-banner.png";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const { createUser, logOut } = useContext(AuthContext);
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (password.length < 6) {
+      return alert("password must be at least 6 characters");
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        logOut();
+        const createdUser = result.user;
+        form.reset();
+        console.log(createUser);
+        updateProfile(createdUser, {
+          
+          displayName: name,
+          photoURL: photoURL,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="my-10">
       <div className="hero min-h-screen bg-base-200">
@@ -14,7 +48,7 @@ const Register = () => {
               <h2 className="font-display text-4xl text-wildJoyColorThree mb-5 font-bold text-center">
                 Please Register
               </h2>
-              <form>
+              <form onSubmit={handleRegister}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-bold">Your Name</span>
@@ -54,11 +88,12 @@ const Register = () => {
                   </label>
                   <input
                     type="text"
-                    name="photo"
+                    name="photoURL"
                     placeholder="url"
                     className="input border-wildJoyColorTwo rounded-md input-bordered"
                   />
                 </div>
+
                 <div className="form-control mt-6">
                   <input
                     className=" btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne"
@@ -73,7 +108,6 @@ const Register = () => {
                   Login
                 </Link>
               </p>
-              
             </div>
           </div>
         </div>

@@ -1,8 +1,27 @@
 import { Link } from "react-router-dom";
 import loginBanner from "../../assets/login-banner.png";
 import SocialLogin from "./SocialLogin";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const LogIn = () => {
+
+  const {signIn} = useContext(AuthContext)
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="my-10">
       <div className="hero min-h-screen bg-base-200">
@@ -15,7 +34,7 @@ const LogIn = () => {
               <h2 className="font-display text-4xl text-wildJoyColorThree mb-5 font-bold text-center">
                 Please Login
               </h2>
-              <form>
+              <form onSubmit={handleLogin}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text font-bold">Email</span>
