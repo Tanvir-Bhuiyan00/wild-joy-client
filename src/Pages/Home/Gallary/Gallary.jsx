@@ -119,36 +119,42 @@ const Gallary = () => {
         <div ref={thumbnailRef} className="keen-slider thumbnail">
           <div className="keen-slider__slide number-slide1 p-2 mt-2 rounded-xl bg-wildJoyColorOne">
             <img
+              className="rounded-xl"
               src="https://img.freepik.com/free-photo/fluffy-toy-texture-close-up_23-2149686884.jpg?w=740&t=st=1684410025~exp=1684410625~hmac=8e3652206921eb28b9b1554659e3ce0bbd3b64a88b9f7283e3bd7f7e9797aeec"
               alt=""
             />
           </div>
           <div className="keen-slider__slide number-slide2 p-2 mt-2 rounded-xl bg-wildJoyColorOne">
             <img
+              className="rounded-xl"
               src="https://img.freepik.com/free-photo/fluffy-toy-texture-close-up_23-2149686916.jpg?size=626&ext=jpg"
               alt=""
             />
           </div>
           <div className="keen-slider__slide number-slide3 p-2 mt-2 rounded-xl bg-wildJoyColorOne">
             <img
+              className="rounded-xl"
               src="https://img.freepik.com/free-photo/beautiful-portrait-incredible-charming-small-baby_1304-3878.jpg?size=626&ext=jpg"
               alt=""
             />
           </div>
           <div className="keen-slider__slide number-slide4 p-2 mt-2 rounded-xl bg-wildJoyColorOne">
             <img
+              className="rounded-xl"
               src="https://img.freepik.com/free-photo/fluffy-toy-texture-close-up_23-2149686890.jpg?size=626&ext=jpg"
               alt=""
             />
           </div>
           <div className="keen-slider__slide number-slide5 p-2 mt-2 rounded-xl bg-wildJoyColorOne">
             <img
+              className="rounded-xl"
               src="https://img.freepik.com/free-photo/fluffy-toy-texture-close-up_23-2149686920.jpg?t=st=1684378445~exp=1684379045~hmac=aaf4b88e07b5cf49261489380598a679b8e386996caeb166720855080edb81f3"
               alt=""
             />
           </div>
           <div className="keen-slider__slide number-slide6 p-2 mt-2 rounded-xl bg-wildJoyColorOne">
             <img
+              className="rounded-xl"
               src="https://img.freepik.com/free-photo/fluffy-toy-texture-close-up_23-2149686918.jpg?w=740&t=st=1684411207~exp=1684411807~hmac=9608ec3725a4bfc132ec553e3bacd7392a940fa23850c216f919a8a1c00e32bb"
               alt=""
             />
