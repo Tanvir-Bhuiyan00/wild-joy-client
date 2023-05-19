@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
 import Gallary from "../Gallary/Gallary";
+import ShopByCategory from "../ShopByCategory/ShopByCategory";
 
 const Home = () => {
-  
   return (
     <div>
       <Helmet>
@@ -11,6 +11,7 @@ const Home = () => {
       </Helmet>
       <Banner></Banner>
       <Gallary></Gallary>
+      <ShopByCategory></ShopByCategory>
     </div>
   );
 };

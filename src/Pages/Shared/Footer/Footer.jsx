@@ -3,8 +3,8 @@ import logo2 from "../../../assets/wild-joy-log2.png"
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 const Footer = () => {
   return (
-    <footer className="bg-wildJoyColorTwo">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="bg-wildJoyColorTwo mt-16">
+      <div className="container mb-0 mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="flex flex-col">
             <img className="w-36  mb-4" src={logo2} alt="Website Logo" />
