@@ -4,9 +4,11 @@ import "./ShopByCategory.css";
 import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { Link } from "react-router-dom";
 
 const ShopByCategory = () => {
   const [toys, setToys] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:5000/toys")
       .then((res) => res.json())
@@ -51,9 +53,11 @@ const ShopByCategory = () => {
                       value={toys[0]?.rating}
                       readOnly
                     />
-                    <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
-                      View Details
-                    </button>
+                    <Link to={`/toyDetails/${toys[0]?._id}`}>
+                      <button className="btn  hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
+                        View Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -79,9 +83,11 @@ const ShopByCategory = () => {
                       value={toys[1]?.rating}
                       readOnly
                     />
-                    <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
-                      View Details
-                    </button>
+                    <Link to={`/toyDetails/${toys[1]?._id}`}>
+                      <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
+                        View Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -112,9 +118,13 @@ const ShopByCategory = () => {
                       value={toys[2]?.rating}
                       readOnly
                     />
-                    <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
-                      View Details
-                    </button>
+                    <div>
+                      <Link to={`/toyDetails/${toys[2]?._id}`}>
+                        <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
+                          View Details
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -140,9 +150,11 @@ const ShopByCategory = () => {
                       value={toys[3]?.rating}
                       readOnly
                     />
-                    <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
-                      View Details
-                    </button>
+                    <Link to={`/toyDetails/${toys[3]?._id}`}>
+                      <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
+                        View Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -151,7 +163,7 @@ const ShopByCategory = () => {
         </TabPanel>
 
         <TabPanel>
-        <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <div>
               <div className="card lg:card-side mb-5 bg-base-100 shadow-xl">
                 <figure>
@@ -173,9 +185,11 @@ const ShopByCategory = () => {
                       value={toys[4]?.rating}
                       readOnly
                     />
-                    <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
-                      View Details
-                    </button>
+                    <Link to={`/toyDetails/${toys[4]?._id}`}>
+                      <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
+                        View Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -201,9 +215,11 @@ const ShopByCategory = () => {
                       value={toys[5]?.rating}
                       readOnly
                     />
-                    <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
-                      View Details
-                    </button>
+                    <Link to={`/toyDetails/${toys[5]?._id}`}>
+                      <button className="btn hover:bg-wildJoyColorTwo hover:text-wildJoyColorOne">
+                        View Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
