@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AddAToy = () => {
+  const { user } = useContext(AuthContext);
+
   const handleAddAToy = (event) => {
     event.preventDefault();
 
@@ -8,7 +12,7 @@ const AddAToy = () => {
     const name = form.name.value;
     const photoURL = form.photoURL.value;
     const sellerName = form.sellerName.value;
-    const email = form.email.value;
+    const email = user?.email;
     const subCategory = form.subCategory.value;
     const price = form.price.value;
     const rating = form.rating.value;
@@ -18,7 +22,7 @@ const AddAToy = () => {
       toyName: name,
       photo: photoURL,
       sellerName,
-      sellerEmail: email,
+      email,
       subCategory,
       price,
       rating,
@@ -81,6 +85,7 @@ const AddAToy = () => {
               <span className="label-text pl-0 font-bold">Seller Name :</span>
 
               <input
+                defaultValue={user?.displayName}
                 type="text"
                 name="sellerName"
                 placeholder="seller name"
@@ -93,6 +98,7 @@ const AddAToy = () => {
               <span className="label-text pl-0 font-bold">Seller Email :</span>
 
               <input
+                defaultValue={user?.email}
                 type="email"
                 name="email"
                 placeholder="seller email"
