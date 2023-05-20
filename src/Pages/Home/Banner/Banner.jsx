@@ -15,9 +15,9 @@ const Banner = () => {
             <p className="py-6 text-wildJoyColorTwo font-medium">
               Embrace the Wild. Discover Joy. Play with Animal Toys!
             </p>
-            <Link to="/login">
-              <button className="py-2 px-5 text-wildJoyColorThree  font-bold  rounded-xl border-2 border-wildJoyColorThree">
-                Login Now
+            <Link to="/register">
+              <button className="py-2 px-5 text-wildJoyColorThree  font-bold  rounded-xl border-2 border-wildJoyColorThree hover:bg-wildJoyColorThree hover:text-wildJoyColorOne">
+                Get Started
               </button>
             </Link>
           </div>

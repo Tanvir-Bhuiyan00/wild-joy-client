@@ -77,17 +77,17 @@ const NavBar = () => {
           {user?.email ? (
             <>
               {" "}
-                <div className="avatar mr-3">
-                <div title={user?.displayName} className="w-12 rounded-full">
-                  <img src={user?.photoURL}  className="image-full "/>
-                </div>
-                </div>
               <button
                 onClick={handleLogOut}
                 className="py-2 px-5 text-wildJoyColorOne  font-bold bg-wildJoyColorThree rounded-xl border-0"
               >
                 Logout
               </button>
+              <div className="avatar ml-3">
+                <div title={user?.displayName} className="w-12 rounded-full">
+                  <img src={user?.photoURL} className="image-full " />
+                </div>
+              </div>
             </>
           ) : (
             <Link to="/login">
