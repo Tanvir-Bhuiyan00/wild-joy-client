@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
+
 
 const AddAToy = () => {
   const { user } = useContext(AuthContext);
@@ -41,7 +43,12 @@ const AddAToy = () => {
         console.log(data);
         if (data.insertedId) {
           form.reset();
-          alert("service book successfully");
+          Swal.fire({
+            title: "Success!",
+            text: "Toy Details Added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
         }
       });
   };

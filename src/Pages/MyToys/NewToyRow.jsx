@@ -1,9 +1,10 @@
 import { MdSystemUpdateAlt } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
-
+import { Link } from "react-router-dom";
 
 const NewToyRow = ({ newToy }) => {
   const {
+    _id,
     photo,
     sellerName,
     email,
@@ -17,9 +18,11 @@ const NewToyRow = ({ newToy }) => {
   return (
     <tr>
       <td>
-        <button className="btn btn-ghost">
-          <MdSystemUpdateAlt className="w-16 h-5"></MdSystemUpdateAlt>
-        </button>
+        <Link to={`/updateDetails/${_id}`}>
+          <button className="btn btn-ghost">
+            <MdSystemUpdateAlt className="w-16 h-5"></MdSystemUpdateAlt>
+          </button>
+        </Link>
       </td>
       <td>
         <div className="flex items-center space-x-3">
@@ -37,16 +40,16 @@ const NewToyRow = ({ newToy }) => {
       <td>
         {subCategory}
         <br />
-        <span className="badge badge-ghost badge-sm">
-          {email}
-        </span>
+        <span className="badge badge-ghost badge-sm">{email}</span>
       </td>
       <td>${price}</td>
       <td>{availableQuantity}</td>
       <td>{rating} Stars</td>
       <td className="center">{detailDescription}</td>
       <td>
-        <button className="btn btn-ghost btn-xs"><AiFillDelete className="w-16 h-5"></AiFillDelete></button>
+        <button className="btn btn-ghost btn-xs">
+          <AiFillDelete className="w-16 h-5"></AiFillDelete>
+        </button>
       </td>
     </tr>
   );
