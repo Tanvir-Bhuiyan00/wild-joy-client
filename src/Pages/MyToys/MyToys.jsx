@@ -3,12 +3,14 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import NewToyRow from "./newToyRow";
+import Swal from "sweetalert2";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
+  const [sortOrder, setSortOrder] = useState("");
   const [newToys, setNewToys] = useState([]);
   const navigate = useNavigate();
 
-  const url = `http://localhost:5000/newToys?email=${user?.email}`;
+  const url = `http://localhost:5000/newToys?email=${user?.email}&sort=${sortOrder}`;
 
   useEffect(() => {
     fetch(url)
@@ -20,16 +22,50 @@ const MyToys = () => {
           navigate("/");
         }
       });
-  }, [url, navigate]);
+  }, [url, navigate,sortOrder]);
 
-  console.log(newToys);
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      background: "#fdfcf3",
+      showCancelButton: true,
+      confirmButtonColor: "#da3f24",
+      cancelButtonColor: "#102949",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/newToys/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Toy Details has been deleted",
+                icon: "success",
+                background: "#fdfcf3",
+                confirmButtonColor: "#102949",
+                confirmButtonText: "Nice",
+              });
+              const remaining = newToys.filter((toy) => toy._id !== _id);
+              setNewToys(remaining);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <Helmet>
         <title>My Toys - Wild Joy</title>
       </Helmet>
       <div className="max-w-7xl mx-auto mt-10">
-        <h2>{newToys.length}</h2>
+       
         <div>
           <div className="overflow-x-auto w-full">
             <table className="table w-full bg-wildJoyColorTwo text-wildJoyColorOne rounded-xl">
@@ -37,12 +73,16 @@ const MyToys = () => {
               <thead className="">
                 <tr>
                   <td>
-                    <select value="option1" className="select select-accent border-wildJoyColorTwo bg-wildJoyColorTwo text-wildJoyColorOne w-24">
-                      <option disabled value="option1">
+                    <select
+                      value={sortOrder}
+                      onChange={(e) => setSortOrder(e.target.value)}
+                      className="select select-accent border-wildJoyColorTwo bg-wildJoyColorTwo text-wildJoyColorOne w-24"
+                    >
+                      <option disabled value="">
                         Filter
                       </option>
-                      <option>Highest Price</option>
-                      <option>Lowest Price</option>
+                      <option value="desc">Highest Price</option>
+                      <option value="asc">Lowest Price</option>
                     </select>
                   </td>
                   <th>Name</th>
@@ -55,9 +95,13 @@ const MyToys = () => {
                 </tr>
               </thead>
               <tbody>
-                {
-                  newToys.map(newToy => <NewToyRow key={newToy._id} newToy={newToy}></NewToyRow>)
-                }
+                {newToys.map((newToy) => (
+                  <NewToyRow
+                    key={newToy._id}
+                    handleDelete={handleDelete}
+                    newToy={newToy}
+                  ></NewToyRow>
+                ))}
               </tbody>
             </table>
           </div>

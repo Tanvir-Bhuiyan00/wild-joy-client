@@ -3,9 +3,6 @@ import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
-    
-
-
 
 const UpdateDetails = () => {
   const { user } = useContext(AuthContext);
@@ -13,7 +10,7 @@ const UpdateDetails = () => {
   const {
     _id,
     photo,
-    
+
     availableQuantity,
     detailDescription,
     price,
@@ -57,12 +54,13 @@ const UpdateDetails = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          
           Swal.fire({
             title: "Success!",
             text: "Toy Details Updated Successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            background: "#fdfcf3",
+            confirmButtonColor: "#102949",
+            confirmButtonText: "Nice",
           });
         }
       });

@@ -2,7 +2,7 @@ import { MdSystemUpdateAlt } from "react-icons/md";
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const NewToyRow = ({ newToy }) => {
+const NewToyRow = ({ newToy, handleDelete }) => {
   const {
     _id,
     photo,
@@ -47,7 +47,10 @@ const NewToyRow = ({ newToy }) => {
       <td>{rating} Stars</td>
       <td className="center">{detailDescription}</td>
       <td>
-        <button className="btn btn-ghost btn-xs">
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn btn-ghost btn-xs"
+        >
           <AiFillDelete className="w-16 h-5"></AiFillDelete>
         </button>
       </td>

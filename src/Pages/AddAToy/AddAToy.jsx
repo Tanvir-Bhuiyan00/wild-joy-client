@@ -42,12 +42,14 @@ const AddAToy = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          form.reset();
+          // form.reset();
           Swal.fire({
             title: "Success!",
             text: "Toy Details Added Successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            background:'#fdfcf3',
+            confirmButtonColor:"#102949",
+            confirmButtonText: "Nice",
           });
         }
       });
