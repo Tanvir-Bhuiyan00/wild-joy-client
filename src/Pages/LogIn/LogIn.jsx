@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginBanner from "../../assets/login-banner.png";
 import SocialLogin from "./SocialLogin";
 import { useContext } from "react";
@@ -7,6 +7,10 @@ import { Helmet } from "react-helmet";
 
 const LogIn = () => {
   const { signIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -18,9 +22,20 @@ const LogIn = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
+
         form.reset();
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        if (
+          error.code === "auth/user-not-found" ||
+          error.code === "auth/wrong-password"
+        ) {
+          alert("Invalid email or password , Reload !!!");
+        } else {
+          console.log(error);
+        }
+      });
   };
   return (
     <div>

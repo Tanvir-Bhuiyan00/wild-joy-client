@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../../assets/wild-joy-logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const location = useLocation();
 
   const handleLogOut = () => {
     logOut()
@@ -14,26 +15,61 @@ const NavBar = () => {
   const navItems = (
     <>
       <li className=" font-bold  tracking-wide text-wildJoyColorTwo">
-        <Link to="/">Home</Link>
+        <Link
+          to="/"
+          className={`${
+            location.pathname === "/" ? "text-wildJoyColorThree" : ""
+          }`}
+        >
+          Home
+        </Link>
       </li>
       <li className="font-bold tracking-wide text-wildJoyColorTwo">
-        <Link to="/allToys">All Toys</Link>
+        <Link
+          to="/allToys"
+          className={`${
+            location.pathname === "/allToys" ? "text-wildJoyColorThree" : ""
+          }`}
+        >
+          All Toys
+        </Link>
       </li>
 
       {user?.email ? (
         <>
           <li className="font-bold tracking-wide text-wildJoyColorTwo">
-            <Link to="/myToys">My Toys</Link>
+            <Link
+              to="/myToys"
+              className={`${
+                location.pathname === "/myToys" ? "text-wildJoyColorThree" : ""
+              }`}
+            >
+              My Toys
+            </Link>
           </li>
           <li className="font-bold tracking-wide text-wildJoyColorTwo">
-            <Link to="/addAToy">Add A Toy</Link>
+            <Link
+              to="/addAToy"
+              className={`${
+                location.pathname === "/addAToy" ? "text-wildJoyColorThree" : ""
+              }`}
+            >
+              Add A Toy
+            </Link>
           </li>
         </>
       ) : (
         <></>
       )}
       <li className="font-bold tracking-wide text-wildJoyColorTwo">
-        <Link to="/blogs">Blogs</Link>
+        <Link
+          to="/blogs"
+          className={`${
+            location.pathname === "/blogs" ? "text-wildJoyColorThree" : ""
+          }`}
+        >
+          Blogs
+        </Link>
       </li>
     </>
   );
