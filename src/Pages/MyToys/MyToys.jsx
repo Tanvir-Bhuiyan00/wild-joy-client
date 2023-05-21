@@ -10,7 +10,7 @@ const MyToys = () => {
   const [newToys, setNewToys] = useState([]);
   const navigate = useNavigate();
 
-  const url = `http://localhost:5000/newToys?email=${user?.email}&sort=${sortOrder}`;
+  const url = `https://wild-joy-server.vercel.app/newToys?email=${user?.email}&sort=${sortOrder}`;
 
   useEffect(() => {
     fetch(url)
@@ -36,7 +36,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/newToys/${_id}`, {
+        fetch(`https://wild-joy-server.vercel.app/newToys/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

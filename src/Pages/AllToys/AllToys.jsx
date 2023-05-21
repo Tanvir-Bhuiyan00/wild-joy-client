@@ -8,13 +8,13 @@ const AllToys = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/newToys")
+    fetch("https://wild-joy-server.vercel.app/newToys")
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, []);
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/toySearchByTitle/${searchText}`)
+    fetch(`https://wild-joy-server.vercel.app/toySearchByTitle/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);

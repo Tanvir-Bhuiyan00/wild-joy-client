@@ -31,7 +31,7 @@ const AddAToy = () => {
       availableQuantity: quantity,
       detailDescription: description,
     };
-    fetch("http://localhost:5000/newToys", {
+    fetch("https://wild-joy-server.vercel.app/newToys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -42,7 +42,7 @@ const AddAToy = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          // form.reset();
+          form.reset();
           Swal.fire({
             title: "Success!",
             text: "Toy Details Added Successfully",

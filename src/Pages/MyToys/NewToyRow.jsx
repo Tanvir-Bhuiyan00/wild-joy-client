@@ -45,7 +45,7 @@ const NewToyRow = ({ newToy, handleDelete }) => {
       <td>${price}</td>
       <td>{availableQuantity}</td>
       <td>{rating} Stars</td>
-      <td className="center">{detailDescription}</td>
+      <td className="center">{detailDescription.slice(0,12)} Read More...</td>
       <td>
         <button
           onClick={() => handleDelete(_id)}

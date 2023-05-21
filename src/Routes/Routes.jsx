@@ -58,7 +58,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/newToys/${params.id}`),
+          fetch(`https://wild-joy-server.vercel.app/newToys/${params.id}`),
       },
 
       {
@@ -69,13 +69,13 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toys/${params.id}`),
+          fetch(`https://wild-joy-server.vercel.app/toys/${params.id}`),
       },
       {
         path: "updateDetails/:id",
         element: <UpdateDetails></UpdateDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/newToys/${params.id}`),
+          fetch(`https://wild-joy-server.vercel.app/newToys/${params.id}`),
       },
       {
         path:"blogs",

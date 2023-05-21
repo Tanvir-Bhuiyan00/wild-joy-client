@@ -43,7 +43,7 @@ const UpdateDetails = () => {
       availableQuantity: quantity,
       detailDescription: description,
     };
-    fetch(`http://localhost:5000/newToys/${_id}`, {
+    fetch(`https://wild-joy-server.vercel.app/newToys/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
