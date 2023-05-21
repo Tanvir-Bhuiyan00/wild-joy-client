@@ -67,7 +67,7 @@ const Blogs = () => {
                   4. What is MongoDB aggregate and how does it work?
                 </h2>
                 <p className="mt-5">
-                  Ans. MongoDB's aggregate is a framework for performing
+                  Ans. MongoDBs aggregate is a framework for performing
                   advanced data aggregation operations on collections of
                   documents. It uses a pipeline of stages to filter, group,
                   sort, and transform data. It enables complex data analysis and
